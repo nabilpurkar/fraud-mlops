@@ -1,0 +1,74 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/raw/creditcard.csv
+      hash: md5
+      md5: e90efcb83d69faf99fcab8b0255024de
+      size: 150828752
+    - path: params.yaml
+      hash: md5
+      md5: 2d07b3daf4977da792db2eca1b908e3f
+      size: 265
+    - path: src/prepare.py
+      hash: md5
+      md5: 7b0fe53e568536d4aa238617c4d850a8
+      size: 2140
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 271ef32b45808f57fdee731ee68b1ab8
+      size: 63013522
+    - path: data/processed/train.csv
+      hash: md5
+      md5: bbbfc5b654e41ff0ab98af11226894a3
+      size: 252078939
+    - path: data/reference/reference.csv
+      hash: md5
+      md5: 377badf95efabae473e6f2a9aa963315
+      size: 2647723
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: bbbfc5b654e41ff0ab98af11226894a3
+      size: 252078939
+    - path: params.yaml
+      hash: md5
+      md5: 2d07b3daf4977da792db2eca1b908e3f
+      size: 265
+    - path: src/train.py
+      hash: md5
+      md5: f67efe25b05769c4bc8b2540d97b0d68
+      size: 3318
+    params:
+      params.yaml:
+        train.max_depth: 10
+        train.n_estimators: 200
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 6598063d816c384ffc933b5c34c76443
+      size: 8793883
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 271ef32b45808f57fdee731ee68b1ab8
+      size: 63013522
+    - path: models/model.pkl
+      hash: md5
+      md5: 6598063d816c384ffc933b5c34c76443
+      size: 8793883
+    - path: src/evaluate.py
+      hash: md5
+      md5: 4edef498f0807efce694799c5d4e7a02
+      size: 2011
+    outs:
+    - path: metrics/scores.json
+      hash: md5
+      md5: bb878e250fe743f5517480bd21b16506
+      size: 89
