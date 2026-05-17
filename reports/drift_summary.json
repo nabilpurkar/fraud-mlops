@@ -1,0 +1,7 @@
+{
+  "drift_score": 0.8667,
+  "drifted_columns_pct": 86.7,
+  "dataset_drifted": true,
+  "threshold": 0.3,
+  "action": "RETRAIN"
+}

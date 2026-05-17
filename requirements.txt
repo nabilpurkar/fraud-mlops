@@ -1,0 +1,35 @@
+# Core ML
+scikit-learn==1.4.2
+pandas==2.2.1
+numpy==1.26.4
+imbalanced-learn==0.12.2
+xgboost==2.0.3
+
+# MLflow
+mlflow==2.11.3
+
+# API Serving
+fastapi==0.110.2
+uvicorn==0.29.0
+pydantic==2.6.4
+prometheus-client==0.20.0
+
+# DVC
+dvc==3.49.0
+dvc-s3==3.2.0
+
+# Drift Detection
+evidently==0.4.22
+
+# BentoML (optional Week 3)
+# bentoml==1.2.12
+
+# Feast (optional Week 3)
+# feast==0.40.0
+
+# YAML
+pyyaml==6.0.1
+
+# Misc
+requests==2.31.0
+python-dotenv==1.0.1
